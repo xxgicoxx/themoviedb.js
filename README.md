@@ -35,10 +35,10 @@ npm install themoviedb.js
 ### 1. TMDb
 ````
 # Account
-Create an TMDb (https://www.themoviedb.org/) account.
+Create an The Movie DB account on https://www.themoviedb.org/.
 
 # API Key
-You can apply for an API key by clicking the "API" (https://www.themoviedb.org/settings/api) link from the left hand sidebar within your account settings page. You need to have a legitimate business name, address, phone number and description to apply for an API key.
+Create an API key on https://www.themoviedb.org/settings/api.
 ````
 
 # Example
@@ -49,7 +49,7 @@ const tmdb = new Tmdb({
   apiKey: 'TMDB_API_KEY',
 });
 
-async function example() {
+(async () => {
   try {
     const trending = await tmdb.all().getTrending();
     console.log(trending);
@@ -65,10 +65,10 @@ async function example() {
 
     const topRatedMovie = await tmdb.movie().getTopRated();
     console.log(topRatedMovie);
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   }
-}
+})();
 ```
 
 # Built With
