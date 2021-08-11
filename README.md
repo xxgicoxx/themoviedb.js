@@ -21,7 +21,7 @@ This product uses the TMDb API but is not endorsed or certified by TMDb.
 - [x] /tv/top_rated
 
 # Docs
-Official The Movie Database [Documentation](https://www.themoviedb.org/documentation/api).
+[Documentation](https://www.themoviedb.org/documentation/api).
 
 # Prerequisites
 * [Node.js](https://nodejs.org/en/)
