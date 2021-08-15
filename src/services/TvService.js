@@ -1,68 +1,59 @@
-const fetch = require('node-fetch');
-const { URLSearchParams } = require('url');
+const { request } = require('../utils');
 
 const { apiConfig } = require('../configs');
 
 class TvService {
   constructor(config) {
-    this._baseUrl = config.baseUrl || 'https://api.themoviedb.org';
-    this._apiKey = config.apiKey;
-
-    this._query = {
-      api_key: this._apiKey,
-    };
+    this.config = config;
   }
 
+  /**
+   * /trending/{media_type}/{time_window}
+   *
+   * @see https://developers.themoviedb.org/3/trending/get-trending
+   * @param {string} timeWindow Time Window
+   * @returns {Promise} Promise
+   */
   async getTrending(timeWindow) {
-    try {
-      const params = new URLSearchParams();
-      Object.keys(this._query).forEach((key) => params.append(key, this._query[key]));
-      const url = `${this._baseUrl}${apiConfig.tv.trending}?${params}`.replace('TIME_WINDOW', timeWindow || 'day');
+    const trending = await request({
+      url: `${apiConfig.url}${apiConfig.tv.trending}`.replace('TIME_WINDOW', timeWindow || 'day'), qs: this.config,
+    });
 
-      const trending = await fetch(url, { method: 'GET' });
-
-      return trending.json();
-    } catch (error) {
-      return error;
-    }
+    return trending;
   }
 
-  async getPopular(query) {
-    try {
-      const queryString = {
-        ...query,
-        api_key: this._apiKey,
-      };
+  /**
+   * /tv/{tv_id}
+   *
+   * @see https://developers.themoviedb.org/3/tv/get-tv-details
+   * @param {Object} options Request params
+   * @returns {Promise} Promise
+   */
+  async getPopular(options) {
+    const qs = { ...this.config, ...options };
 
-      const params = new URLSearchParams();
-      Object.keys(queryString).forEach((key) => params.append(key, queryString[key]));
-      const url = `${this._baseUrl}${apiConfig.tv.popular}?${params}`;
+    const popular = await request({
+      url: `${apiConfig.url}${apiConfig.tv.popular}`, qs,
+    });
 
-      const popular = await fetch(url, { method: 'GET' });
-
-      return popular.json();
-    } catch (error) {
-      return error;
-    }
+    return popular;
   }
 
-  async getTopRated(query) {
-    try {
-      const queryString = {
-        ...query,
-        api_key: this._apiKey,
-      };
+  /**
+   * /tv/top_rated
+   *
+   * @see https://developers.themoviedb.org/3/tv/get-top-rated-tv
+   * @param {Object} options Request params
+   * @returns {Promise} Promise
+   */
+  async getTopRated(options) {
+    const qs = { ...this.config, ...options };
 
-      const params = new URLSearchParams();
-      Object.keys(queryString).forEach((key) => params.append(key, queryString[key]));
-      const url = `${this._baseUrl}${apiConfig.tv.top_rated}?${params}`;
+    const topRated = await request({
+      url: `${apiConfig.url}${apiConfig.tv.top_rated}`, qs,
+    });
 
-      const nowPlaying = await fetch(url, { method: 'GET' });
-
-      return nowPlaying.json();
-    } catch (error) {
-      return error;
-    }
+    return topRated;
   }
 }
 

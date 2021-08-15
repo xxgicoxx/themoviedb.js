@@ -21,7 +21,7 @@ This product uses the TMDb API but is not endorsed or certified by TMDb.
 - [x] /tv/top_rated
 
 # Docs
-[Documentation](https://www.themoviedb.org/documentation/api)
+[Documentation](https://developers.themoviedb.org/3)
 
 # Prerequisites
 * [Node.js](https://nodejs.org/en/)
@@ -46,7 +46,7 @@ Create an API key on https://www.themoviedb.org/settings/api.
 const Tmdb = require('themoviedb.js');
 
 const tmdb = new Tmdb({ 
-  apiKey: 'TMDB_API_KEY',
+  api_key: 'TMDB_API_KEY',
 });
 
 (async () => {

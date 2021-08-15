@@ -1,4 +1,5 @@
 const api = {
+  url: 'https://api.themoviedb.org',
   trending: '/3/trending/all/TIME_WINDOW',
   movie: {
     trending: '/3/trending/movie/TIME_WINDOW',

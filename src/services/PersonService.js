@@ -1,49 +1,42 @@
-const fetch = require('node-fetch');
-const { URLSearchParams } = require('url');
+const { request } = require('../utils');
 
 const { apiConfig } = require('../configs');
 
 class PersonService {
   constructor(config) {
-    this._baseUrl = config.baseUrl || 'https://api.themoviedb.org';
-    this._apiKey = config.apiKey;
-
-    this._query = {
-      api_key: this._apiKey,
-    };
+    this.config = config;
   }
 
+  /**
+   * /trending/{media_type}/{time_window}
+   *
+   * @see https://developers.themoviedb.org/3/trending/get-trending
+   * @param {string} timeWindow Time Window
+   * @returns {Promise} Promise
+   */
   async getTrending(timeWindow) {
-    try {
-      const params = new URLSearchParams();
-      Object.keys(this._query).forEach((key) => params.append(key, this._query[key]));
-      const url = `${this._baseUrl}${apiConfig.person.trending}?${params}`.replace('TIME_WINDOW', timeWindow || 'day');
+    const trending = await request({
+      url: `${apiConfig.url}${apiConfig.person.trending}`.replace('TIME_WINDOW', timeWindow || 'day'), qs: this.config,
+    });
 
-      const trending = await fetch(url, { method: 'GET' });
-
-      return trending.json();
-    } catch (error) {
-      return error;
-    }
+    return trending;
   }
 
-  async getPopular(query) {
-    try {
-      const queryString = {
-        ...query,
-        api_key: this._apiKey,
-      };
+  /**
+   * /person/popular
+   *
+   * @see https://developers.themoviedb.org/3/people/get-popular-people
+   * @param {Object} options Request params
+   * @returns {Promise} Promise
+   */
+  async getPopular(options) {
+    const qs = { ...this.config, ...options };
 
-      const params = new URLSearchParams();
-      Object.keys(queryString).forEach((key) => params.append(key, queryString[key]));
-      const url = `${this._baseUrl}${apiConfig.person.popular}?${params}`;
+    const popular = await request({
+      url: `${apiConfig.url}${apiConfig.person.popular}`, qs,
+    });
 
-      const popular = await fetch(url, { method: 'GET' });
-
-      return popular.json();
-    } catch (error) {
-      return error;
-    }
+    return popular;
   }
 }
 
