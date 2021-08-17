@@ -12,6 +12,7 @@ class AllService {
    *
    * @see https://developers.themoviedb.org/3/trending/get-trending
    * @param {string} timeWindow Time Window
+   *
    * @returns {Promise} Promise
    */
   async getTrending(timeWindow) {

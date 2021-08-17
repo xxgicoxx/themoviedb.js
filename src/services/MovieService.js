@@ -12,6 +12,7 @@ class MovieService {
    *
    * @see https://developers.themoviedb.org/3/trending/get-trending
    * @param {string} timeWindow Time Window
+   *
    * @returns {Promise} Promise
    */
   async getTrending(timeWindow) {
@@ -26,7 +27,8 @@ class MovieService {
    * /movie/popular
    *
    * @see https://developers.themoviedb.org/3/movies/get-popular-movies
-   * @param {Object} options Request params
+   * @param {Object} options Query parameters
+   *
    * @returns {Promise} Promise
    */
   async getPopular(options) {
@@ -43,7 +45,8 @@ class MovieService {
    * /movie/now_playing
    *
    * @see https://developers.themoviedb.org/3/movies/get-now-playing
-   * @param {Object} options Request params
+   * @param {Object} options Query parameters
+   *
    * @returns {Promise} Promise
    */
   async getNowPlaying(options) {
@@ -60,7 +63,8 @@ class MovieService {
    * /movie/top_rated
    *
    * @see https://developers.themoviedb.org/3/movies/get-top-rated-movies
-   * @param {Object} options Request params
+   * @param {Object} options Query parameters
+   *
    * @returns {Promise} Promise
    */
   async getTopRated(options) {

@@ -12,6 +12,7 @@ class PersonService {
    *
    * @see https://developers.themoviedb.org/3/trending/get-trending
    * @param {string} timeWindow Time Window
+   *
    * @returns {Promise} Promise
    */
   async getTrending(timeWindow) {
@@ -26,7 +27,8 @@ class PersonService {
    * /person/popular
    *
    * @see https://developers.themoviedb.org/3/people/get-popular-people
-   * @param {Object} options Request params
+   * @param {Object} options Query parameters
+   *
    * @returns {Promise} Promise
    */
   async getPopular(options) {

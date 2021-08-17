@@ -11,13 +11,12 @@ class TmdbController {
    * @param {string} config.api_key API key
    */
   constructor(config) {
-    this.config = config;
-    this.config.api_key = config.api_key;
+    this._config = config;
 
-    this._allService = new AllService(this.config);
-    this._movieService = new MovieService(this.config);
-    this._personService = new PersonService(this.config);
-    this._tvService = new TvService(this.config);
+    this._allService = new AllService(this._config);
+    this._movieService = new MovieService(this._config);
+    this._personService = new PersonService(this._config);
+    this._tvService = new TvService(this._config);
   }
 
   /**
