@@ -1,7 +1,7 @@
 {
   "name": "themoviedb.js",
   "displayName": "themoviedb.js",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "The Movie Database API wrapper for Node.js",
   "author": "Giovani de Oliveira <giovanioliveira@outlook.com.br>",
   "license": "MIT",

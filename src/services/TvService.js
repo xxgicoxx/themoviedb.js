@@ -1,4 +1,4 @@
-const { request } = require('../utils');
+const { constants, request } = require('../utils');
 
 const { apiConfig } = require('../configs');
 
@@ -17,7 +17,7 @@ class TvService {
    */
   async getTrending(timeWindow) {
     const trending = await request({
-      url: `${apiConfig.url}${apiConfig.tv.trending}`.replace('TIME_WINDOW', timeWindow || 'day'), qs: this.config,
+      url: `${apiConfig.url}${apiConfig.tv.trending}`.replace(constants.TIME_WINDOW, timeWindow || constants.DAY), qs: this.config,
     });
 
     return trending;

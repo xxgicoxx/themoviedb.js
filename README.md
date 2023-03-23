@@ -5,20 +5,17 @@ The Movie Database API wrapper for Node.js.
   <img src="assets/imgs/themoviedb.svg">
 </p>
 
-# Important
-This product uses the TMDb API but is not endorsed or certified by TMDb.
-
-# Endpoints
-- [x] /trending/all/{time_window}
-- [x] /trending/movie/{time_window}
-- [x] /trending/person/{time_window}
-- [x] /trending/tv/{time_window}
-- [x] /movie/popular
-- [x] /person/popular
-- [x] /tv/popular
-- [x] /movie/now_playing
-- [x] /movie/top_rated
-- [x] /tv/top_rated
+# Features
+* Trending all
+* Trending movies
+* Trending people
+* Trending tv shows
+* Popular movies
+* Popular people
+* Popular tv shows
+* Movies in theatres
+* Top rated movies
+* Top rated tv shows
 
 # Docs
 * [Documentation](https://developers.themoviedb.org/3)
@@ -32,7 +29,7 @@ npm install themoviedb.js
 ````
 
 # Credentials
-### 1. TMDb
+### 1. TMDB
 ````
 # Account
 Create an The Movie DB account on https://www.themoviedb.org/.
@@ -43,9 +40,9 @@ Create an API key on https://www.themoviedb.org/settings/api.
 
 # Example
 ```javascript
-const Tmdb = require('themoviedb.js');
+const TMDB = require('themoviedb.js');
 
-const tmdb = new Tmdb({ 
+const tmdb = new TMDB({ 
   api_key: 'TMDB_API_KEY',
 });
 
@@ -79,3 +76,6 @@ const tmdb = new Tmdb({
 
 # Acknowledgments
 * [The Movie Database](https://www.themoviedb.org/)
+
+# Attribution
+This product uses the TMDB API but is not endorsed or certified by TMDB.
